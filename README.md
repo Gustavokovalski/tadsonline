@@ -1,7 +1,7 @@
 -- tadsonline
 
 # Desenvolvimento de Aplicações Corporativas
-Projeto consiste no desenvolvimento de Desenvolvimento de dois sistemas de se comunicam: O **TADS Delivery System**, que é um sistema online de entrega , e o **LOL - Lavanderia On-line e TADS** que é o sistema de uma lavanderia online.  
+Projeto consiste no desenvolvimento de dois sistemas que se comunicam, um deles é o **TADS Delivery System**, que é um sistema online de entregas, e o **LOL - Lavanderia On-line e TADS** que é o sistema de uma lavanderia online.  
 
 Para o desenvolvimento do Projeto:
 · Utilizar linguagem de programação JAVA - Web;
