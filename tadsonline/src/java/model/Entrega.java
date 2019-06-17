@@ -20,11 +20,11 @@ import javax.persistence.Transient;
  * @author Gustavo-Kamila
  */
 @javax.persistence.Entity
-@javax.persistence.Table(name="Entrega")
+@javax.persistence.Table(name="tb_entrega")
 @AssociationOverrides({
-		@AssociationOverride(name = "Funcionario", 
-			joinColumns = @JoinColumn(name = "cpf")),
-                @AssociationOverride(name = "StatusEntrega", 
+		@AssociationOverride(name = "tb_funcionario", 
+			joinColumns = @JoinColumn(name = "idFunc")),
+                @AssociationOverride(name = "tb_status_entrega", 
 			joinColumns = @JoinColumn(name = "idStatus"))})
 public class Entrega implements Serializable{
     Integer idEntrega;
@@ -34,7 +34,7 @@ public class Entrega implements Serializable{
     String descricao;
     Double valor;
     String motivo;
-    Funcionario cpfEntregador;
+    Funcionario idFunc;
     StatusEntrega idStatusEntrega;
 
     public Entrega() {
@@ -99,12 +99,12 @@ public class Entrega implements Serializable{
     }
 
     @Transient
-    public Funcionario getCpfEntregador() {
-        return cpfEntregador;
+    public Funcionario getIdFunc() {
+        return idFunc;
     }
 
-    public void setCpfEntregador(Funcionario cpfEntregador) {
-        this.cpfEntregador = cpfEntregador;
+    public void setIdFunc(Funcionario idFunc) {
+        this.idFunc = idFunc;
     }
 
     @Transient

@@ -16,7 +16,7 @@ import javax.persistence.Id;
  */
 
 @javax.persistence.Entity
-@javax.persistence.Table(name="Cargo")
+@javax.persistence.Table(name="tb_cargo")
 public class Cargo implements Serializable{
     private Integer idCargo;
     private String descricao;

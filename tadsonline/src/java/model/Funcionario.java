@@ -10,6 +10,7 @@ import javax.persistence.AssociationOverride;
 import javax.persistence.AssociationOverrides;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 /**
@@ -17,11 +18,12 @@ import javax.persistence.Transient;
  * @author Gustavo-Kamila
  */
 @javax.persistence.Entity
-@javax.persistence.Table(name="Funcionario")
+@javax.persistence.Table(name="tb_funcionario")
 @AssociationOverrides({
-		@AssociationOverride(name = "Cargo", 
+		@AssociationOverride(name = "tb_cargo", 
 			joinColumns = @JoinColumn(name = "idCargo"))})
 public class Funcionario implements Serializable{
+    private Integer idFunc;
     private String cpf;
     private String nome;
     private String endereco;
@@ -30,11 +32,21 @@ public class Funcionario implements Serializable{
     private String telefone;
     private String telefoneAlt;
     private Cargo cargo;
+    private String login;
+    private String senha;
 
     public Funcionario() {
     }
 
     @Id
+    public Integer getIdFunc() {
+        return idFunc;
+    }
+
+    public void setIdFunc(Integer idFunc) {
+        this.idFunc = idFunc;
+    } 
+    
     public String getCpf() {
         return cpf;
     }
@@ -91,7 +103,8 @@ public class Funcionario implements Serializable{
         this.telefoneAlt = telefoneAlt;
     }
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "idCargo", referencedColumnName = "idCargo")
     public Cargo getCargo() {
         return cargo;
     }
@@ -99,6 +112,23 @@ public class Funcionario implements Serializable{
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
     
     
 }

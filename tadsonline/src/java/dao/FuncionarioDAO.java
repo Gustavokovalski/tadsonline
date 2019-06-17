@@ -55,4 +55,44 @@ public class FuncionarioDAO {
         
         return lista;
     }
+    
+    public Funcionario autenticar(Funcionario funcionario) {
+        boolean result = false;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.clear();
+        Query select = session.createQuery("from Funcionario where login = ? and senha = ?");
+        select.setString(0, funcionario.getLogin());
+        select.setString(1, funcionario.getSenha());
+        Funcionario funcResult = (Funcionario)select.uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return funcResult;       
+   }
+    
+   public boolean cpfExiste(String cpf) {
+        System.out.println(cpf);
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.clear();
+        Query select = session.createQuery("from tb_funcionario where cpf = ?");
+        select.setString(0, cpf);
+        List<Funcionario> lista = select.list();
+        session.getTransaction().commit();
+        session.close();
+        return lista.size() > 0;
+   }
+   
+   public boolean emailExiste(String email) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.clear();
+        Query select = session.createQuery("from tb_funcionario where email = ?");
+        select.setString(0, email);
+        List<Funcionario> lista = select.list();
+        session.getTransaction().commit();
+        session.close();
+        return lista.size() > 0;
+   }
+    
 }
