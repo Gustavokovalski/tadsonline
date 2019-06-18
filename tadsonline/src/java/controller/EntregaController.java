@@ -35,7 +35,7 @@ public class EntregaController {
     public void verificarPerfil() {
         if (loginMB.getFuncionario().getCargo().getIdCargo() != util.Perfil.PERFIL_GERENTE) {
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("perfilFuncionario.xhtml?faces-redirect=true");
             } catch (IOException ex) {
                 Logger.getLogger(EntregaController.class.getName()).log(Level.SEVERE, null, ex);
             }
