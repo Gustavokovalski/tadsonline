@@ -57,36 +57,49 @@
                         <fieldset>
                           <legend>Cadastro de entregas</legend>
                           <div class="form-group" style="margin-left: 1px; margin-top: 6px;">
-                                <label class="col-md-4 control-label" for="data">Data da entrega:</label>
-                                <div class="col-md-4">
-                                    <input type="date" class="form-control input-md" name="data"/>
-                                </div>
+                                <label class="col-md-4 control-label" for="inputData">Data da entrega:</label>
+                                <h:inputText required="true" id="inputData" styleClass="form-control inputTexto" class="dataEntrega" value="#{EntregaController.entrega.dataEntrega}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/> 
+                                </h:inputText>                                
                             </div>
                             <div class="form-group" style="margin-left: 6px;">
-                                <label class="col-md-4 control-label" for="endereco">Endereço:</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-md" name="endereco"/>
-                                </div>
+                                <label class="col-md-4 control-label" for="inputEndereco">Endereço:</label>
+                                <h:inputText required="true" id="inputEndereco" styleClass="form-control inputTexto" value="#{EntregaController.entrega.enderecoEntrega}">
+                                    <f:passThroughAttribute name="placeholder" value="Endereço" />
+                                </h:inputText>                                 
                             </div>
                             <div class="form-group" style="margin-left: 316px;">
-                                <label class="col-md-4 control-label" for="destinatario">Destinatário:</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-md" name="destinatario" style="width: 282px;"/>
-                                </div>
+                                <label class="col-md-4 control-label" for="inputDestinatario">Destinatário:</label>
+                                <h:inputText required="true" id="inputDestinatario" styleClass="form-control inputTexto" value="#{EntregaController.entrega.destinatario}">
+                                    <f:passThroughAttribute name="placeholder" value="Destinatário" />
+                                </h:inputText>                                 
                             </div>
                             <div class="form-group" style="margin-left: 320px;">
-                                <label class="col-md-4 control-label" for="descricao">Descrição:</label>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control input-md" name="descricao" style="width: 169px;"/>
-                                </div>
-                            </div>                            
+                                <label class="col-md-4 control-label" for="inputDescricao">Descrição:</label>
+                                <h:inputText required="true" id="inputDescricao" styleClass="form-control inputTexto" value="#{EntregaController.entrega.descricao}">
+                                    <f:passThroughAttribute name="placeholder" value="Descrição" />
+                                </h:inputText>                                 
+                            </div>
+                            <div class="form-group" style="margin-left: 320px;">
+                                <label class="col-md-4 control-label" for="inputValor">Valor:</label>
+                                <h:inputText required="true" id="inputValor" styleClass="form-control inputTexto" value="#{EntregaController.entrega.valor}">
+                                    <f:passThroughAttribute name="placeholder" value="Valor" />
+                                </h:inputText>                                 
+                            </div>  
                         </fieldset>
                         <br/>
-                        <button type="button " class="btnGeral btnSalvar " name="button ">Salvar</button>        
+                        <h:commandButton class="btn btn-md btn-success botao pull-right" value="Salvar" action="#{EntregaController.cadastrarEntrega()}"></h:commandButton>       
                     </h:form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script>
+            $(document).ready(function () { 
+                $(".dataEntrega").mask("99/99/9999");
+            });
+    </script>  
   </h:body>
 </html>

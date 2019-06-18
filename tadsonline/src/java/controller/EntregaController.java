@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.hibernate.Query;
 import util.HibernateUtil;
 import org.hibernate.Session;
 import javax.faces.bean.ManagedProperty;
+import model.StatusEntrega;
 
 @ManagedBean(name="EntregaController")
 @SessionScoped
@@ -26,8 +28,7 @@ public class EntregaController {
     private Entrega entrega = new Entrega();
     private List<Entrega> entregas = new ArrayList<Entrega>();
     
-    public EntregaController() {
-        
+    public EntregaController() {        
     }
     
     public void verificarPerfil() {
@@ -42,10 +43,21 @@ public class EntregaController {
 
     public String cadastrarEntrega(){
         entrega = new Entrega();
+        EntregaDAO dao = new EntregaDAO();
+        StatusEntrega status = new StatusEntrega();
+        status.setIdStatus(1);
+        this.entrega.setIdStatusEntrega(status);
         
-        new EntregaDAO().cadastrar(entrega);
+        java.util.Date dt = this.entrega.getDataEntrega();
+        java.util.Calendar c = Calendar.getInstance(); 
+        c.setTime(dt); 
+        c.add(java.util.Calendar.DATE, 1);
+        dt = c.getTime();
+        this.entrega.setDataEntrega(dt);
         
-        return "cadastroEntrega";
+        dao.cadastrar(entrega);
+        
+        return "visualizarEntregas?faces-redirect=true";
     }
     
     public void listar() {

@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @author Gustavo-Kamila
  */
 @javax.persistence.Entity
-@javax.persistence.Table(name="StatusEntrega")
+@javax.persistence.Table(name="tb_status_entrega")
 public class StatusEntrega implements Serializable{
     private Integer idStatus;
     private String descricao;

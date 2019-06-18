@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 /**
@@ -38,6 +39,7 @@ public class Entrega implements Serializable{
     StatusEntrega idStatusEntrega;
 
     public Entrega() {
+        idStatusEntrega = new StatusEntrega();
     }
 
     @Id
@@ -98,7 +100,8 @@ public class Entrega implements Serializable{
         this.motivo = motivo;
     }
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "idFunc", referencedColumnName = "idFunc")
     public Funcionario getIdFunc() {
         return idFunc;
     }
@@ -107,7 +110,8 @@ public class Entrega implements Serializable{
         this.idFunc = idFunc;
     }
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "idStatusEntrega", referencedColumnName = "idStatus")
     public StatusEntrega getIdStatusEntrega() {
         return idStatusEntrega;
     }
