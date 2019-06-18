@@ -28,7 +28,8 @@ public class EntregaController {
     private Entrega entrega = new Entrega();
     private List<Entrega> entregas = new ArrayList<Entrega>();
     
-    public EntregaController() {        
+    public EntregaController() {
+        entrega = new Entrega();
     }
     
     public void verificarPerfil() {
@@ -41,8 +42,7 @@ public class EntregaController {
         }
     }    
 
-    public String cadastrarEntrega(){
-        entrega = new Entrega();
+    public String cadastrarEntrega(){        
         EntregaDAO dao = new EntregaDAO();
         StatusEntrega status = new StatusEntrega();
         status.setIdStatus(1);
