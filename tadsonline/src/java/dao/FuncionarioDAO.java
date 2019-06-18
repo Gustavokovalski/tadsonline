@@ -75,7 +75,7 @@ public class FuncionarioDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.clear();
-        Query select = session.createQuery("from tb_funcionario where cpf = ?");
+        Query select = session.createQuery("from Funcionario where cpf = ?");
         select.setString(0, cpf);
         List<Funcionario> lista = select.list();
         session.getTransaction().commit();
@@ -87,7 +87,7 @@ public class FuncionarioDAO {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.clear();
-        Query select = session.createQuery("from tb_funcionario where email = ?");
+        Query select = session.createQuery("from Funcionario where email = ?");
         select.setString(0, email);
         List<Funcionario> lista = select.list();
         session.getTransaction().commit();

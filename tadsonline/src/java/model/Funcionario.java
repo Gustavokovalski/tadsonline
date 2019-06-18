@@ -8,6 +8,8 @@ package model;
 import java.io.Serializable;
 import javax.persistence.AssociationOverride;
 import javax.persistence.AssociationOverrides;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -36,9 +38,11 @@ public class Funcionario implements Serializable{
     private String senha;
 
     public Funcionario() {
+        this.cargo = new Cargo();
     }
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     public Integer getIdFunc() {
         return idFunc;
     }

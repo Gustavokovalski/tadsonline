@@ -41,14 +41,11 @@ public class NovoFuncController{
             return null;
         }
         
-        String senha = this.novoFunc.getSenha();
-        this.novoFunc.setSenha(Utils.MD5(senha));
-        this.novoFunc.setCargo(this.novoFunc.getCargo());
-        String telefone = this.novoFunc.getTelefone().replaceAll("[^a-zA-Z]+","");
+        String telefone = this.novoFunc.getTelefone().replaceAll("[^a-zA-Z0-9]+","");
         this.novoFunc.setTelefone(telefone);
 
         dao.cadastrar(novoFunc);
-        return "pedidos?faces-redirect=true";        
+        return "visualizarEntregas?faces-redirect=true";        
     }
     
     public Funcionario getNovoFunc() {
